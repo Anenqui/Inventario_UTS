@@ -9,6 +9,13 @@ $casos =[
     ["Mouse",true]
 ];
 
+$casosCantidad = [
+    [-1, false],
+    [5, true],
+    ["", false],
+    ["abc", false]
+];
+
 $fallos = 0;
 
 foreach ($casos as [$entrada,$esperado]){
@@ -16,6 +23,16 @@ foreach ($casos as [$entrada,$esperado]){
     if ($obtenido === $esperado){
         echo "PASS\n";
     }else{
+        echo "FAIL\n";
+        $fallos++;
+    }
+}
+
+foreach ($casosCantidad as [$entrada, $esperado]) {
+    $obtenido = validarCantidadProducto($entrada);
+    if ($obtenido === $esperado) {
+        echo "PASS\n";
+    } else {
         echo "FAIL\n";
         $fallos++;
     }
