@@ -71,6 +71,12 @@ $estado = $_GET['estado'] ?? '';
                 </div>
             <?php endif; ?>
 
+            <?php if ($estado === 'nombre_invalido'): ?>
+                <div class="mensaje error">
+                    El nombre debe tener al menos 3 caracteres y no puede estar vacío.
+                </div>
+            <?php endif; ?>
+
             <form action="guardar.php" method="POST">
                 <div class="campo">
                     <label for="nombre">
@@ -96,6 +102,7 @@ $estado = $_GET['estado'] ?? '';
                         type="number"
                         id="cantidad"
                         name="cantidad"
+                        min="1"
                         placeholder="Ejemplo: 10"
                         required
                     >
