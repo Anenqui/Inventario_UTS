@@ -17,25 +17,33 @@ $casosCantidad = [
 ];
 
 $fallos = 0;
+$aprobadas = 0;
 
 foreach ($casos as [$entrada,$esperado]){
     $obtenido = validarNombreProducto($entrada);
-    if ($obtenido === $esperado){
-        echo "PASS\n";
-    }else{
-        echo "FAIL\n";
+    $resultado = $obtenido === $esperado ? "PASS" : "FAIL";
+    echo 'La prueba ' . json_encode($entrada, JSON_UNESCAPED_UNICODE) . ' resultó en: ' . $resultado . "\n";
+
+    if ($resultado === "PASS") {
+        $aprobadas++;
+    } else {
         $fallos++;
     }
 }
 
 foreach ($casosCantidad as [$entrada, $esperado]) {
     $obtenido = validarCantidadProducto($entrada);
-    if ($obtenido === $esperado) {
-        echo "PASS\n";
+    $resultado = $obtenido === $esperado ? "PASS" : "FAIL";
+    echo 'La prueba ' . json_encode($entrada, JSON_UNESCAPED_UNICODE) . ' resultó en: ' . $resultado . "\n";
+
+    if ($resultado === "PASS") {
+        $aprobadas++;
     } else {
-        echo "FAIL\n";
         $fallos++;
     }
 }
+
+echo "\nTotal PASS: $aprobadas\n";
+echo "Total FAIL: $fallos\n";
 
 exit($fallos === 0 ? 0 : 1);
