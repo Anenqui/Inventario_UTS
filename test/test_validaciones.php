@@ -9,11 +9,16 @@ $casos =[
     ["Mouse",true]
 ];
 
+$fallos = 0;
+
 foreach ($casos as [$entrada,$esperado]){
     $obtenido = validarNombreProducto($entrada);
     if ($obtenido === $esperado){
         echo "PASS\n";
     }else{
-        echo"FALL\n";
+        echo "FAIL\n";
+        $fallos++;
     }
 }
+
+exit($fallos === 0 ? 0 : 1);
