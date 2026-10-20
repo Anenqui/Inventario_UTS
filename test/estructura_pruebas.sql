@@ -1,5 +1,3 @@
-CREATE DATABASE IF NOT EXISTS `estructura_pruebas` 
-USE `estructura_pruebas`;
 
 CREATE TABLE IF NOT EXISTS `productos` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
